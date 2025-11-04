@@ -1,17 +1,17 @@
-# react-native-reanimated-confetti
+# @hikaaam/react-native-reanimated-confetti
 
 A confetti animation build using [react-native-reanimated](https://docs.swmansion.com/react-native-reanimated/).
 
 ## Installation
 
-`npm install react-native-reanimated-confetti`
+`npm install @hikaaam/react-native-reanimated-confetti`
 
 ## Usage
 
 ```jsx
-import { StatusBar } from "expo-status-bar";
-import { StyleSheet, Text, TouchableOpacity, View } from "react-native";
-import { useConfetti } from "react-native-reanimated-confetti";
+import { StatusBar } from 'expo-status-bar';
+import { StyleSheet, Text, TouchableOpacity, View } from 'react-native';
+import { useConfetti } from '@hikaaam/react-native-reanimated-confetti';
 
 export default function App() {
   const { RenderConfetti, startconfetti } = useConfetti();
@@ -29,11 +29,11 @@ export default function App() {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: "#fff",
-    alignItems: "center",
-    justifyContent: "center",
+    backgroundColor: '#fff',
+    alignItems: 'center',
+    justifyContent: 'center',
   },
-  text: { color: "#000", fontSize: 16 },
+  text: { color: '#000', fontSize: 16 },
 });
 ```
 
@@ -54,14 +54,14 @@ https://github.com/user-attachments/assets/e0a17369-a872-41cd-9f38-ce20cc14df58
 You can pass options to `useConfetti` to customize the animation.
 
 ```jsx
-import { StatusBar } from "expo-status-bar";
-import { StyleSheet, Text, TouchableOpacity, View } from "react-native";
-import { useConfetti } from "./modules";
+import { StatusBar } from 'expo-status-bar';
+import { StyleSheet, Text, TouchableOpacity, View } from 'react-native';
+import { useConfetti } from './modules';
 
 export default function App() {
   const { RenderConfetti, startconfetti } = useConfetti({
     duration: 3000,
-    colors: ["#a864fd", "#29cdff", "#78ff44", "#ff718d", "#fdff6a"],
+    colors: ['#a864fd', '#29cdff', '#78ff44', '#ff718d', '#fdff6a'],
     particlesAmount: 300,
   });
   return (
@@ -82,11 +82,11 @@ export default function App() {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: "#fff",
-    alignItems: "center",
-    justifyContent: "center",
+    backgroundColor: '#fff',
+    alignItems: 'center',
+    justifyContent: 'center',
   },
-  text: { color: "#000", fontSize: 16 },
+  text: { color: '#000', fontSize: 16 },
 });
 ```
 
