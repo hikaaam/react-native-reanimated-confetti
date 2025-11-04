@@ -1,11 +1,12 @@
-import { Dimensions, StyleProp, ViewStyle } from "react-native";
-import React, { useCallback, useEffect, useMemo, useRef } from "react";
-import Confetti from "../Components/Confetti";
-import { ConfettiProps } from "./interface";
+import { Dimensions } from 'react-native';
+import React, { useCallback, useEffect, useMemo, useRef } from 'react';
+import Confetti from '../Components/Confetti';
+import { type ConfettiProps } from './interface';
+import { type StyleProp, type ViewStyle } from 'react-native';
 
-const width = Dimensions.get("window").width;
+const width = Dimensions.get('window').width;
 
-const default_colors = ["#a864fd", "#29cdff", "#78ff44", "#ff718d", "#fdff6a"];
+const default_colors = ['#a864fd', '#29cdff', '#78ff44', '#ff718d', '#fdff6a'];
 const getRandomColor = (colors: string[]) => {
   return colors[Math.floor(Math.random() * colors.length)];
 };
@@ -65,7 +66,7 @@ const useConfetti = (props?: ConfettiProps) => {
 
             return (
               <Confetti
-                key={"conffeti-item" + index}
+                key={'conffeti-item' + index}
                 color={getRandomColor(colors)}
                 startXPosition={startXPosition}
                 isPlaying={isPlaying}

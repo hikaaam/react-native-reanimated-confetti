@@ -1,12 +1,10 @@
 import {
-  View,
-  Text,
   Dimensions,
   StyleSheet,
-  StyleProp,
-  ViewStyle,
-} from "react-native";
-import React, { useCallback, useEffect, useMemo, useState } from "react";
+  type StyleProp,
+  type ViewStyle,
+} from 'react-native';
+import { useCallback, useEffect } from 'react';
 import Animated, {
   Easing,
   useAnimatedStyle,
@@ -14,14 +12,14 @@ import Animated, {
   withDelay,
   withSequence,
   withTiming,
-} from "react-native-reanimated";
+} from 'react-native-reanimated';
 
-const { height } = Dimensions.get("window");
+const { height } = Dimensions.get('window');
 
 const maximuxXOffset = 30;
 
 interface ConfettiProps {
-  color: string;
+  color?: string;
   startXPosition: number;
   isPlaying: boolean;
   duration?: number;
@@ -60,15 +58,15 @@ const Confetti = ({
   }));
 
   const randomize = useCallback((width: number): number[] => {
-    "worklet";
+    'worklet';
     const positions = [];
     for (let i = 0; i < 6; i++) {
       const randomOffset =
         Math.random() * maximuxXOffset * (Math.random() < 0.5 ? -1 : 1);
       let newPosition = width + randomOffset;
       if (newPosition < 0) newPosition = 0;
-      if (newPosition > Dimensions.get("window").width)
-        newPosition = Dimensions.get("window").width;
+      if (newPosition > Dimensions.get('window').width)
+        newPosition = Dimensions.get('window').width;
       positions.push(newPosition);
     }
     return positions;
@@ -96,7 +94,7 @@ const Confetti = ({
         )
       )
     );
-  }, []);
+  }, [duration, randomize, startXPosition, translateX, translateY]);
 
   useEffect(() => {
     if (isPlaying) {
@@ -105,7 +103,7 @@ const Confetti = ({
       translateY.value = 0;
       translateX.value = 0;
     }
-  }, [isPlaying]);
+  }, [isPlaying, fallingAnimation, translateX, translateY]);
 
   return (
     <Animated.View
@@ -128,7 +126,7 @@ const styles = StyleSheet.create({
   confettiFlake: {
     width: Math.random() * 10 + 10,
     aspectRatio: Math.random() * 1 + 1,
-    position: "absolute",
+    position: 'absolute',
     top: 0,
     zIndex: 1000,
   },

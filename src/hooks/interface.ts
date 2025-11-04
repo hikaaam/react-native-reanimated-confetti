@@ -1,5 +1,3 @@
-import { StyleProp, ViewStyle } from "react-native";
-
 /**
  * Props for the Confetti hook
  * @interface ConfettiProps

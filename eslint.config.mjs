@@ -22,6 +22,11 @@ export default defineConfig([
       'react/react-in-jsx-scope': 'off',
       'prettier/prettier': 'error',
     },
+    languageOptions: {
+      parserOptions: {
+        warnOnUnsupportedTypeScriptVersion: false,
+      },
+    },
   },
   {
     ignores: ['node_modules/', 'lib/'],
