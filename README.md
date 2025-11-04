@@ -14,13 +14,13 @@ import { StyleSheet, Text, TouchableOpacity, View } from 'react-native';
 import { useConfetti } from '@hikaaam/react-native-reanimated-confetti';
 
 export default function App() {
-  const { RenderConfetti, startconfetti } = useConfetti();
+  const { RenderConfetti, startconfetti, isPlaying } = useConfetti();
   return (
     <View style={styles.container}>
       <StatusBar style="auto" />
       <RenderConfetti />
-      <TouchableOpacity onPress={startconfetti}>
-        <Text style={styles.text}>press me!</Text>
+      <TouchableOpacity onPress={startconfetti} disabled={isPlaying}>
+        <Text style={styles.text}>{isPlaying ? 'playing' : 'press me!'}</Text>
       </TouchableOpacity>
     </View>
   );
@@ -47,11 +47,11 @@ const styles = StyleSheet.create({
 
 ### `useConfetti(options?)`
 
-| Option            | Type     | Default    | Description                  |
-| ----------------- | -------- | ---------- | ---------------------------- |
-| `particlesAmount` | number   | 80         | Number of confetti particles |
-| `colors`          | string[] | See source | Array of confetti colors     |
-| `duration`        | number   | 2000       | Animation duration (ms)      |
+| Option            | Type     | Default            | Description                  |
+| ----------------- | -------- | ------------------ | ---------------------------- |
+| `particlesAmount` | number   | android:80,ios:200 | Number of confetti particles |
+| `colors`          | string[] | See source         | Array of confetti colors     |
+| `duration`        | number   | 2000               | Animation duration (ms)      |
 
 ## Customization
 
@@ -63,7 +63,7 @@ import { StyleSheet, Text, TouchableOpacity, View } from 'react-native';
 import { useConfetti } from './modules';
 
 export default function App() {
-  const { RenderConfetti, startconfetti } = useConfetti({
+  const { RenderConfetti, startconfetti, isPlaying } = useConfetti({
     duration: 3000,
     colors: ['#a864fd', '#29cdff', '#78ff44', '#ff718d', '#fdff6a'],
     particlesAmount: 300,
@@ -76,8 +76,8 @@ export default function App() {
           width: 5,
         }}
       />
-      <TouchableOpacity onPress={startconfetti}>
-        <Text style={styles.text}>press me!</Text>
+      <TouchableOpacity onPress={startconfetti} disabled={isPlaying}>
+        <Text style={styles.text}>{isPlaying ? 'playing' : 'press me!'}</Text>
       </TouchableOpacity>
     </View>
   );
