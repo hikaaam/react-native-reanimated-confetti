@@ -7,6 +7,7 @@ import {
 import { useCallback, useEffect, useMemo, useRef } from 'react';
 import Animated, {
   Easing,
+  interpolate,
   useAnimatedStyle,
   useSharedValue,
   withDelay,
@@ -16,6 +17,7 @@ import Animated, {
 
 const { height, width } = Dimensions.get('window');
 const MAX_X_OFFSET = 30;
+const default_y = -100;
 
 interface ConfettiProps {
   color?: string;
@@ -50,7 +52,7 @@ const Confetti = ({
   duration = 2000,
   particleStyle,
 }: ConfettiProps) => {
-  const translateY = useSharedValue(-100);
+  const translateY = useSharedValue(default_y);
   const translateX = useSharedValue(startXPosition);
   const animationRef = useRef(false);
 
@@ -106,6 +108,7 @@ const Confetti = ({
           scale: isPlaying ? 1 : withTiming(0, { duration: 500 }),
         },
       ],
+      opacity: interpolate(y, [default_y, 300], [0, 1]),
     };
   });
 
@@ -137,7 +140,7 @@ const Confetti = ({
 
   const resetAnimation = useCallback(() => {
     animationRef.current = false;
-    translateY.value = -100;
+    translateY.value = default_y;
     translateX.value = startXPosition;
     prevSkewX.value = 0;
     prevSkewY.value = 0;
